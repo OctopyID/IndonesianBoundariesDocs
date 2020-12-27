@@ -1,0 +1,50 @@
+@import 'styles';
+
+$font: '/static/fonts/';
+
+@font-face {
+    font-family: 'Indonesiana';
+    src: url($font + 'Indonesiana.woff') format('woff'),
+    url($font + 'Indonesiana.svg#Indonesiana') format('svg'),
+    url($font + 'Indonesiana.eot'),
+    url($font + 'Indonesiana.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --ifm-font-family-indonesian: "Indonesiana";
+
+    --ifm-color-primary: #00A6B8;
+    --ifm-color-primary-dark: #0095A6;
+    --ifm-color-primary-darker: #008D9C;
+    --ifm-color-primary-darkest: #007481;
+    --ifm-color-primary-light: #00B7CA;
+    --ifm-color-primary-lighter: #00BFD4;
+    --ifm-color-primary-lightest: #00D8EF;
+
+    --ifm-polygon-tilted: polygon(0 0, 100% 0, 100% calc(100% - 4vw), 0 100%);
+}
+
+.docusaurus-highlight-code-line {
+    background-color: rgb(72, 77, 91);
+    display: block;
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    padding: 0 var(--ifm-pre-padding);
+}
+
+.indonesian-font, .navbar__title {
+    font-family: var(--ifm-font-family-indonesian);
+    font-size: 190%;
+}
+
+.indonesian-font {
+    font-size: 500%;
+    letter-spacing: 10px;
+}
+
+.tilted {
+    clip-path: var(--ifm-polygon-tilted);
+    -webkit-clip-path: var(--ifm-polygon-tilted);
+}
+

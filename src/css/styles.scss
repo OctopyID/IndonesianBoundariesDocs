@@ -1,0 +1,102 @@
+.button--custom {
+    position: relative !important;
+    height: 50px !important;
+    width: 170px !important;
+    outline: none !important;
+    text-decoration: none !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    border: 2px solid rgba(255, 255, 255, 1) !important;
+    border-radius: 2em !important;
+    font-weight: 550;
+    font-size: 20px;
+    font-family: inherit;
+    z-index: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+
+    span {
+        color: #FFFFFF;
+        font-weight: bold;
+    }
+
+    &:hover {
+        animation: rotate 0.7s ease-in-out both;
+
+        span {
+            animation: storm 0.7s ease-in-out both;
+            animation-delay: 0.06s;
+        }
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+    25% {
+        transform: rotate(3deg) translate3d(0, 0, 0);
+    }
+    50% {
+        transform: rotate(-3deg) translate3d(0, 0, 0);
+    }
+    75% {
+        transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+    100% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+}
+
+@keyframes storm {
+    0% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+    }
+    25% {
+        transform: translate3d(4px, 0, 0) translateZ(0);
+    }
+    50% {
+        transform: translate3d(-3px, 0, 0) translateZ(0);
+    }
+    75% {
+        transform: translate3d(2px, 0, 0) translateZ(0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+    }
+}
+
+.button--pill {
+    &:before, &:after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #FFFFFF;
+        content: '';
+        opacity: 0;
+        transition: transform 0.15s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.15s cubic-bezier(0.02, 0.01, 0.47, 1);
+        z-index: -1;
+        transform: translate(100%, -25%) translate3d(0, 0, 0);
+    }
+
+    &:hover {
+        &:before, &:after {
+            opacity: 0.15;
+            transition: transform 0.2s cubic-bezier(0.02, 0.01, 0.47, 1), opacity 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+        }
+
+        &:before {
+            transform: translate3d(50%, 0, 0) scale(0.9);
+        }
+
+        &:after {
+            transform: translate(50%, 0) scale(1.1);
+        }
+    }
+}

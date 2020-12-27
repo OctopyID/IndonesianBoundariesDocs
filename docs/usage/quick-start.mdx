@@ -1,0 +1,74 @@
+---
+title: Quick Start
+------------------
+
+Indonesian Boundaries has provided four kinds of base maps from the provincial to the village level.
+
+## Availability of Functions
+
+- province
+- city
+- district
+- village
+
+## Create Basic Map
+In this example, we will create a basic map of the province on the island of Kalimantan.
+
+`indonesia.blade.php`
+
+```html
+<!doctype html>
+<html lang="en">
+    <head>
+         ...
+        <link href="{{ asset('vendor/octopyid/boundary/app.js') }}" rel="stylesheet">
+        <title>Indonesian Boundaries</title>
+        <style type="text/css">
+            #map {
+                width : 100%;
+                height : 1000px;
+            }
+        </style>
+    </head>
+    <body>
+    
+        <div class="container">
+            <div id="map"></div>
+        </div>
+        
+        @boundary
+        
+        <script src="{{ asset('vendor/octopyid/boundary/app.js') }}"></script>
+        <script type="text/javascript">
+            (function () {
+                $boundary.render();
+            })();
+        </script>
+    </body>
+</html>
+```
+
+:::tip
+Don't forget to call the `@boundary` directive on your blade.
+:::
+
+`routes/web.php`
+
+```php
+use Octopy\Indonesian\Boundaries\Boundary;
+use Octopy\Indonesian\Boundaries\Draw\Draw;
+
+Route::get('/', function (Boundary $boundary) {
+    $boundary->element('map')->draw(function (Draw $draw) {
+        $draw->province([
+            61, 62, 63, 64, 65,
+        ]);
+    });
+
+    return view('indonesia');
+});
+```
+
+:::note
+Figures contained in `->province()` parameters are the applicable area codes in accordance with Indonesian regulations.
+:::
